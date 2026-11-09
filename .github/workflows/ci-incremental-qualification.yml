@@ -1,21 +1,22 @@
 name: Incremental CI qualification
 
-on:
-  pull_request:
-    paths:
-      - package.json
-      - turbo.json
-      - .github/ci-task-matrix.json
-      - .github/scripts/ci-plan.mjs
-      - .github/scripts/ci-diff.mjs
-      - .github/scripts/ci-inputs.mjs
-      - .github/scripts/tests/ci-plan.test.mjs
-      - .github/actions/run-ci-task/**
-      - .github/workflows/ci-routing.yml
-      - .github/workflows/pr-trusted.yml
-      - .github/workflows/ci-incremental-qualification.yml
-      - scripts/ci/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - package.json
+#       - turbo.json
+#       - .github/ci-task-matrix.json
+#       - .github/scripts/ci-plan.mjs
+#       - .github/scripts/ci-diff.mjs
+#       - .github/scripts/ci-inputs.mjs
+#       - .github/scripts/tests/ci-plan.test.mjs
+#       - .github/actions/run-ci-task/**
+#       - .github/workflows/ci-routing.yml
+#       - .github/workflows/pr-trusted.yml
+#       - .github/workflows/ci-incremental-qualification.yml
+#       - scripts/ci/**
+# 
 permissions:
   contents: read
 

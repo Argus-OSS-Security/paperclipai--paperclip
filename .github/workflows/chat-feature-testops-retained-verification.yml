@@ -1,9 +1,10 @@
 name: Read-only retained chat TestOps verification
 run-name: Read-only retained chat verification / origin 41217990335 / ${{ github.run_id }}
 
-on:
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+# 
 permissions:
   contents: read
   actions: read

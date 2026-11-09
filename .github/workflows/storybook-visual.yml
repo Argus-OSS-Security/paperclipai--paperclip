@@ -1,32 +1,33 @@
 name: Storybook Visual
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "Repository branch to publish (deployment only; empty uses the selected workflow branch)"
-        required: false
-        type: string
-        default: ""
-      deploy_preview:
-        description: "Publish this branch to S3/CloudFront instead of running visual tests (CODEOWNERS only)"
-        required: false
-        type: boolean
-        default: false
-      update_snapshots:
-        description: "Generate updated snapshots and a baseline review bundle"
-        required: false
-        type: boolean
-        default: false
-  pull_request:
-    branches:
-      - master
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - labeled
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: "Repository branch to publish (deployment only; empty uses the selected workflow branch)"
+#         required: false
+#         type: string
+#         default: ""
+#       deploy_preview:
+#         description: "Publish this branch to S3/CloudFront instead of running visual tests (CODEOWNERS only)"
+#         required: false
+#         type: boolean
+#         default: false
+#       update_snapshots:
+#         description: "Generate updated snapshots and a baseline review bundle"
+#         required: false
+#         type: boolean
+#         default: false
+#   pull_request:
+#     branches:
+#       - master
+#     types:
+#       - opened
+#       - reopened
+#       - synchronize
+#       - labeled
+# 
 concurrency:
   group: storybook-visual-${{ inputs.deploy_preview && github.run_id || 'visual' }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true

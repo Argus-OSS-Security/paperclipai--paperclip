@@ -1,21 +1,22 @@
 name: Backup checkpoint qualification
-on:
-  pull_request:
-    paths:
-      - 'packages/db/**'
-      - 'server/src/services/*backup*'
-      - 'server/src/lib/dedicated-test-database-url.ts'
-      - 'server/src/__tests__/*backup*'
-      - 'server/src/__tests__/fixtures/database-backup-worker.ts'
-      - 'server/src/index.ts'
-      - 'server/scripts/*backup*'
-      - 'server/scripts/lib/backup-qualification.ts'
-      - 'server/vitest.backup-qualification.config.ts'
-      - '.github/workflows/backup-checkpoint-qualification.yml'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-  push:
-    branches: [master]
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - 'packages/db/**'
+#       - 'server/src/services/*backup*'
+#       - 'server/src/lib/dedicated-test-database-url.ts'
+#       - 'server/src/__tests__/*backup*'
+#       - 'server/src/__tests__/fixtures/database-backup-worker.ts'
+#       - 'server/src/index.ts'
+#       - 'server/scripts/*backup*'
+#       - 'server/scripts/lib/backup-qualification.ts'
+#       - 'server/vitest.backup-qualification.config.ts'
+#       - '.github/workflows/backup-checkpoint-qualification.yml'
+#       - 'package.json'
+#       - 'pnpm-lock.yaml'
+#   push:
+#     branches: [master]
 permissions:
   contents: read
 jobs:

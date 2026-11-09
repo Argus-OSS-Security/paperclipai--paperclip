@@ -1,40 +1,41 @@
 name: Chat catalog TestOps case
 
-on:
-  workflow_call:
-    inputs:
-      protocol:
-        type: string
-        required: true
-      cell:
-        type: string
-        required: true
-      target_sha:
-        type: string
-        required: true
-      runner:
-        type: string
-        required: true
-      selection_artifact_id:
-        type: string
-        required: true
-      selection_sha256:
-        type: string
-        required: true
-      build_artifact_id:
-        type: string
-        required: true
-      ALLURE_JOB_RUN_ID:
-        type: string
-        required: true
-    secrets:
-      OPENROUTER_API_KEY:
-        required: false
-      ANTHROPIC_API_KEY:
-        required: false
-      ALLURE_TOKEN:
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       protocol:
+#         type: string
+#         required: true
+#       cell:
+#         type: string
+#         required: true
+#       target_sha:
+#         type: string
+#         required: true
+#       runner:
+#         type: string
+#         required: true
+#       selection_artifact_id:
+#         type: string
+#         required: true
+#       selection_sha256:
+#         type: string
+#         required: true
+#       build_artifact_id:
+#         type: string
+#         required: true
+#       ALLURE_JOB_RUN_ID:
+#         type: string
+#         required: true
+#     secrets:
+#       OPENROUTER_API_KEY:
+#         required: false
+#       ANTHROPIC_API_KEY:
+#         required: false
+#       ALLURE_TOKEN:
+#         required: false
+# 
 permissions:
   contents: read
   actions: read

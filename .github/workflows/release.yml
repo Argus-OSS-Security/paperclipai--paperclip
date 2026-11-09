@@ -1,61 +1,62 @@
 name: Release
 run-name: ${{ inputs.channel == 'preview' && format('Stack deploy {0} build', inputs.request_id) || inputs.channel == 'cloud-migrator' && format('Cloud migrator {0}', inputs.source_ref) || 'Release' }}
 
-on:
-  push:
-    branches:
-      - master
-  schedule:
-    # Nightly cut at 09:00 UTC, after the workday's merges have settled.
-    - cron: "0 9 * * *"
-  workflow_dispatch:
-    inputs:
-      channel:
-        description: Release channel to publish
-        required: true
-        type: choice
-        options:
-          - stable
-          - beta
-          - nightly
-          - preview
-          - cloud-migrator
-        default: stable
-      source_ref:
-        description: Stable source ref, or full immutable SHA for a preview or cloud migrator build
-        required: true
-        type: string
-        default: master
-      request_id:
-        description: (preview/cloud-migrator) Correlation UUID
-        type: string
-        default: ""
-      preview_migrator:
-        description: (preview) Publish isolated shared and database packages if missing
-        type: boolean
-        default: false
-      stable_date:
-        description: Enter a UTC date in YYYY-MM-DD format, for example 2026-03-18. Do not enter a version string. The workflow will resolve that date to a stable version such as 2026.318.0, then 2026.318.1 for the next same-day stable.
-        required: false
-        type: string
-      source_version:
-        description: For nightly, the explicit canary version to promote (empty selects the newest canary on master). For beta, the explicit nightly version to promote (empty selects the newest nightly on master).
-        required: false
-        type: string
-      candidate_branch:
-        description: (beta) candidate/beta-* branch to build a cherry-picked beta from. Leave empty to promote a nightly. Mutually exclusive with source_version.
-        required: false
-        type: string
-      skip_soak_justification:
-        description: (stable) Written justification for publishing a stable whose source has not soaked as a beta for 3 days. Leave empty for normal releases.
-        required: false
-        type: string
-      dry_run:
-        description: Preview the release without publishing
-        required: true
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - master
+#   schedule:
+#     # Nightly cut at 09:00 UTC, after the workday's merges have settled.
+#     - cron: "0 9 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       channel:
+#         description: Release channel to publish
+#         required: true
+#         type: choice
+#         options:
+#           - stable
+#           - beta
+#           - nightly
+#           - preview
+#           - cloud-migrator
+#         default: stable
+#       source_ref:
+#         description: Stable source ref, or full immutable SHA for a preview or cloud migrator build
+#         required: true
+#         type: string
+#         default: master
+#       request_id:
+#         description: (preview/cloud-migrator) Correlation UUID
+#         type: string
+#         default: ""
+#       preview_migrator:
+#         description: (preview) Publish isolated shared and database packages if missing
+#         type: boolean
+#         default: false
+#       stable_date:
+#         description: Enter a UTC date in YYYY-MM-DD format, for example 2026-03-18. Do not enter a version string. The workflow will resolve that date to a stable version such as 2026.318.0, then 2026.318.1 for the next same-day stable.
+#         required: false
+#         type: string
+#       source_version:
+#         description: For nightly, the explicit canary version to promote (empty selects the newest canary on master). For beta, the explicit nightly version to promote (empty selects the newest nightly on master).
+#         required: false
+#         type: string
+#       candidate_branch:
+#         description: (beta) candidate/beta-* branch to build a cherry-picked beta from. Leave empty to promote a nightly. Mutually exclusive with source_version.
+#         required: false
+#         type: string
+#       skip_soak_justification:
+#         description: (stable) Written justification for publishing a stable whose source has not soaked as a beta for 3 days. Leave empty for normal releases.
+#         required: false
+#         type: string
+#       dry_run:
+#         description: Preview the release without publishing
+#         required: true
+#         type: boolean
+#         default: false
+# 
 concurrency:
   group: ${{ (inputs.channel == 'preview' || inputs.channel == 'cloud-migrator') && format('{0}-{1}', inputs.channel, inputs.source_ref) || format('release-{0}-{1}', github.event_name, github.ref) }}
   cancel-in-progress: false

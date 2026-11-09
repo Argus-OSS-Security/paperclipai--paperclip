@@ -3,9 +3,10 @@ name: Trusted PR CI
 # Rollout is intentionally two-step: merge this reusable workflow first, then
 # replace pr.yml with an immutable-SHA caller so the active CI definition cannot
 # drift from this file.
-on:
-  workflow_call:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+# 
 permissions:
   actions: read
   contents: read

@@ -1,22 +1,23 @@
 name: Sentry SDK contract
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/sentry-contract.yml
-      - server/package.json
-      - server/src/sentry*.ts
-      - server/src/peer-version-check.ts
-      - server/src/__tests__/*sentry*.test.ts
-  push:
-    branches: [master]
-    paths:
-      - .github/workflows/sentry-contract.yml
-      - server/package.json
-      - server/src/sentry*.ts
-      - server/src/peer-version-check.ts
-      - server/src/__tests__/*sentry*.test.ts
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/sentry-contract.yml
+#       - server/package.json
+#       - server/src/sentry*.ts
+#       - server/src/peer-version-check.ts
+#       - server/src/__tests__/*sentry*.test.ts
+#   push:
+#     branches: [master]
+#     paths:
+#       - .github/workflows/sentry-contract.yml
+#       - server/package.json
+#       - server/src/sentry*.ts
+#       - server/src/peer-version-check.ts
+#       - server/src/__tests__/*sentry*.test.ts
+# 
 permissions:
   contents: read
 

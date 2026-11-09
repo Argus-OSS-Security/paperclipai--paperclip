@@ -1,10 +1,11 @@
 name: Refresh CI test durations
 
-on:
-  schedule:
-    - cron: '41 7 * * 1'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: '41 7 * * 1'
+#   workflow_dispatch:
+# 
 permissions:
   actions: read
   contents: write

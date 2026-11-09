@@ -1,28 +1,29 @@
 name: Release Verify
 
-on:
-  workflow_call:
-    inputs:
-      ref:
-        description: Commit SHA, branch, or tag to verify
-        required: true
-        type: string
-      runner_binaries_only:
-        description: Build exact-source release daemons without publishing or provider calls
-        required: false
-        default: false
-        type: boolean
-    outputs:
-      runner_artifact_prefix:
-        value: ${{ jobs.runner_binaries.outputs.artifact_prefix }}
-      provider_pack_artifact_prefix:
-        value: ${{ jobs.runner_binaries.outputs.provider_pack_artifact_prefix }}
-      native_consumer_matrix:
-        value: ${{ jobs.runner_binary_targets.outputs.native_consumers }}
-
-# Caller-provided refs may name unmerged PR code. AWS is eligible only when
-# the caller runs on canonical master and verifies that event's exact SHA.
-# The organization group also restricts these workflow files to master.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       ref:
+#         description: Commit SHA, branch, or tag to verify
+#         required: true
+#         type: string
+#       runner_binaries_only:
+#         description: Build exact-source release daemons without publishing or provider calls
+#         required: false
+#         default: false
+#         type: boolean
+#     outputs:
+#       runner_artifact_prefix:
+#         value: ${{ jobs.runner_binaries.outputs.artifact_prefix }}
+#       provider_pack_artifact_prefix:
+#         value: ${{ jobs.runner_binaries.outputs.provider_pack_artifact_prefix }}
+#       native_consumer_matrix:
+#         value: ${{ jobs.runner_binary_targets.outputs.native_consumers }}
+# 
+# # Caller-provided refs may name unmerged PR code. AWS is eligible only when
+# # the caller runs on canonical master and verifies that event's exact SHA.
+# # The organization group also restricts these workflow files to master.
 jobs:
   runner_chaos_evals:
     if: ${{ !inputs.runner_binaries_only }}

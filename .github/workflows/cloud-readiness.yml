@@ -1,11 +1,12 @@
 name: Cloud readiness
 run-name: Cloud readiness ${{ github.sha }}
 
-on:
-  push:
-    branches: [master]
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches: [master]
+#   workflow_dispatch:
+# 
 permissions: {}
 
 # Source verification stays independent of npm publication and image builds.

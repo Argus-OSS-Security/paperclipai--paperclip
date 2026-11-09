@@ -1,51 +1,52 @@
 name: Release Smoke
 
-on:
-  workflow_dispatch:
-    inputs:
-      paperclip_version:
-        description: Published Paperclip dist-tag to test
-        required: true
-        default: canary
-        type: choice
-        options:
-          - canary
-          - nightly
-          - beta
-          - latest
-      host_port:
-        description: Host port for the Docker smoke container
-        required: false
-        default: "3232"
-        type: string
-      artifact_name:
-        description: Artifact name for uploaded diagnostics
-        required: false
-        default: release-smoke
-        type: string
-      qualification_source_sha:
-        description: Optional immutable source SHA for provider-free native package qualification
-        required: false
-        default: ""
-        type: string
-  workflow_call:
-    inputs:
-      paperclip_version:
-        required: true
-        type: string
-      host_port:
-        required: false
-        default: "3232"
-        type: string
-      artifact_name:
-        required: false
-        default: release-smoke
-        type: string
-      qualification_source_sha:
-        required: false
-        default: ""
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       paperclip_version:
+#         description: Published Paperclip dist-tag to test
+#         required: true
+#         default: canary
+#         type: choice
+#         options:
+#           - canary
+#           - nightly
+#           - beta
+#           - latest
+#       host_port:
+#         description: Host port for the Docker smoke container
+#         required: false
+#         default: "3232"
+#         type: string
+#       artifact_name:
+#         description: Artifact name for uploaded diagnostics
+#         required: false
+#         default: release-smoke
+#         type: string
+#       qualification_source_sha:
+#         description: Optional immutable source SHA for provider-free native package qualification
+#         required: false
+#         default: ""
+#         type: string
+#   workflow_call:
+#     inputs:
+#       paperclip_version:
+#         required: true
+#         type: string
+#       host_port:
+#         required: false
+#         default: "3232"
+#         type: string
+#       artifact_name:
+#         required: false
+#         default: release-smoke
+#         type: string
+#       qualification_source_sha:
+#         required: false
+#         default: ""
+#         type: string
+# 
 permissions:
   contents: read
 

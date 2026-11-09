@@ -1,12 +1,13 @@
 name: commitperclip PR Review
 
-on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-
-# Always runs from base branch context — never executes PR code.
-# pull_request_target gives access to secrets for untrusted fork PRs.
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request_target:
+#     types: [opened, synchronize, reopened]
+# 
+# # Always runs from base branch context — never executes PR code.
+# # pull_request_target gives access to secrets for untrusted fork PRs.
+# 
 permissions:
   pull-requests: write
   checks: write

@@ -1,18 +1,19 @@
 name: CI routing
 
-on:
-  workflow_dispatch:
-  workflow_call:
-    outputs:
-      runner:
-        value: ${{ jobs.gate.outputs.runner }}
-      full_ci:
-        value: ${{ jobs.gate.outputs.full_ci }}
-      plan:
-        value: ${{ jobs.gate.outputs.plan }}
-      profile_ci:
-        value: ${{ jobs.gate.outputs.profile_ci }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   workflow_call:
+#     outputs:
+#       runner:
+#         value: ${{ jobs.gate.outputs.runner }}
+#       full_ci:
+#         value: ${{ jobs.gate.outputs.full_ci }}
+#       plan:
+#         value: ${{ jobs.gate.outputs.plan }}
+#       profile_ci:
+#         value: ${{ jobs.gate.outputs.profile_ci }}
+# 
 permissions:
   actions: read
   contents: read

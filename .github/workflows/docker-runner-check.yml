@@ -1,50 +1,51 @@
 name: Docker Runner check
 
-on:
-  workflow_dispatch:
-    inputs:
-      target_branch:
-        description: "Branch or full commit SHA in this repository to build"
-        type: string
-        required: false
-      build_eval_image:
-        description: "Build an immutable full-source qualification OCI artifact without publication"
-        type: boolean
-        default: false
-      publish_eval_image:
-        description: "Publish an immutable Daytona qualification image on hosted Linux (no provider credentials)"
-        type: boolean
-        default: false
-      release_run_id:
-        description: "Consume a successful exact-source Release Smoke pack, daemon and public-package artifact set"
-        type: string
-        required: false
-      release_base_image:
-        description: "Immutable Paperclip Daytona base image for the release-artifact consumer"
-        type: string
-        required: false
-      verify_source:
-        description: "Run broad source checks on hosted Linux"
-        type: boolean
-        default: false
-      verify_public_install:
-        description: "Build and verify clean public npm installation on hosted Linux (no provider credentials)"
-        type: boolean
-        default: false
-      build_eval_viewer:
-        description: "Build the canonical eval report viewer on hosted Linux"
-        type: boolean
-        default: false
-  pull_request:
-    paths:
-      - .github/workflows/docker-runner-check.yml
-      - Dockerfile
-      - .dockerignore
-      - scripts/check-docker-runner-cache.sh
-      - packages/paperclip-runner/rust-toolchain.toml
-      - packages/paperclip-runner/runner/**
-      - packages/paperclip-runner/protocol/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       target_branch:
+#         description: "Branch or full commit SHA in this repository to build"
+#         type: string
+#         required: false
+#       build_eval_image:
+#         description: "Build an immutable full-source qualification OCI artifact without publication"
+#         type: boolean
+#         default: false
+#       publish_eval_image:
+#         description: "Publish an immutable Daytona qualification image on hosted Linux (no provider credentials)"
+#         type: boolean
+#         default: false
+#       release_run_id:
+#         description: "Consume a successful exact-source Release Smoke pack, daemon and public-package artifact set"
+#         type: string
+#         required: false
+#       release_base_image:
+#         description: "Immutable Paperclip Daytona base image for the release-artifact consumer"
+#         type: string
+#         required: false
+#       verify_source:
+#         description: "Run broad source checks on hosted Linux"
+#         type: boolean
+#         default: false
+#       verify_public_install:
+#         description: "Build and verify clean public npm installation on hosted Linux (no provider credentials)"
+#         type: boolean
+#         default: false
+#       build_eval_viewer:
+#         description: "Build the canonical eval report viewer on hosted Linux"
+#         type: boolean
+#         default: false
+#   pull_request:
+#     paths:
+#       - .github/workflows/docker-runner-check.yml
+#       - Dockerfile
+#       - .dockerignore
+#       - scripts/check-docker-runner-cache.sh
+#       - packages/paperclip-runner/rust-toolchain.toml
+#       - packages/paperclip-runner/runner/**
+#       - packages/paperclip-runner/protocol/**
+# 
 permissions: {}
 
 concurrency:

@@ -1,23 +1,24 @@
 name: Chat catalog TestOps
 run-name: Chat catalog TestOps / ${{ inputs.operation || 'evaluate' }} / ${{ inputs.ALLURE_JOB_RUN_ID || github.run_id }}
 
-on:
-  workflow_dispatch:
-    inputs:
-      operation:
-        type: choice
-        options: [evaluate, bootstrap]
-        default: evaluate
-        description: Run the exact TestOps selection, or register its catalog plan
-      ALLURE_JOB_RUN_ID:
-        type: string
-        required: false
-        description: TestOps job-run identity; source, model and clocks are fixed
-      ALLURE_USERNAME:
-        type: string
-        required: false
-        description: Reserved service metadata; never grants authority
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       operation:
+#         type: choice
+#         options: [evaluate, bootstrap]
+#         default: evaluate
+#         description: Run the exact TestOps selection, or register its catalog plan
+#       ALLURE_JOB_RUN_ID:
+#         type: string
+#         required: false
+#         description: TestOps job-run identity; source, model and clocks are fixed
+#       ALLURE_USERNAME:
+#         type: string
+#         required: false
+#         description: Reserved service metadata; never grants authority
+# 
 permissions:
   contents: read
   actions: read

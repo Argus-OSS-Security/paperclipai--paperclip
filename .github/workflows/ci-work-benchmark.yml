@@ -1,21 +1,22 @@
 name: CI work benchmark
 
-on:
-  pull_request:
-    types: [opened, synchronize, reopened, labeled]
-    paths:
-      - .github/actions/setup-ci-dependencies/**
-      - .github/workflows/ci-work-benchmark.yml
-      - scripts/ci-dependency-cache.mjs
-      - .github/workflows/pr-trusted.yml
-      - .github/workflows/release-verify.yml
-      - scripts/runner-debug-crate-cache.mjs
-      - scripts/benchmark-ci-work.mjs
-      - scripts/run-vitest-stable.mjs
-      - server/src/__tests__/setup-supertest.ts
-      - server/src/__tests__/workspace-runtime.test.ts
-      - server/src/services/workspace-git-snapshot-streaming.test.ts
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened, labeled]
+#     paths:
+#       - .github/actions/setup-ci-dependencies/**
+#       - .github/workflows/ci-work-benchmark.yml
+#       - scripts/ci-dependency-cache.mjs
+#       - .github/workflows/pr-trusted.yml
+#       - .github/workflows/release-verify.yml
+#       - scripts/runner-debug-crate-cache.mjs
+#       - scripts/benchmark-ci-work.mjs
+#       - scripts/run-vitest-stable.mjs
+#       - server/src/__tests__/setup-supertest.ts
+#       - server/src/__tests__/workspace-runtime.test.ts
+#       - server/src/services/workspace-git-snapshot-streaming.test.ts
+# 
 permissions:
   contents: read
 

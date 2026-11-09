@@ -1,66 +1,67 @@
 name: Runner Full-Stack E2E
 run-name: Runner Full-Stack E2E / ${{ github.event.schedule || inputs.cadence || 'manual' }}
 
-on:
-  schedule:
-    - cron: "47 8 * * *"
-    - cron: "47 9 * * 0"
-  workflow_dispatch:
-    inputs:
-      cadence:
-        description: "Bounded daily ($20) or weekly ($100) selection; manual keeps explicit selectors"
-        type: choice
-        options: [manual, daily, weekly]
-        default: manual
-      target_branch:
-        description: "Branch in paperclipai/paperclip to test; the trusted workflow still runs from master"
-        type: string
-        required: false
-      max_parallel:
-        description: "Optional lower concurrency for this campaign (cannot exceed the configured limit)"
-        type: string
-        required: false
-      all:
-        description: "Run the complete paid matrix when no narrower selector is supplied"
-        type: boolean
-        default: true
-      group:
-        description: "Comma-separated groups (AND semantics: legacy,native,local,daytona,warm,core,breadth)"
-        type: string
-        required: false
-      suite:
-        description: "Comma-separated suite IDs"
-        type: string
-        required: false
-      profile:
-        description: "Comma-separated runner profile fixture IDs"
-        type: string
-        required: false
-      environment:
-        description: "Comma-separated environment fixture IDs"
-        type: string
-        required: false
-      case:
-        description: "Comma-separated task case fixture IDs"
-        type: string
-        required: false
-      id:
-        description: "Comma-separated full suite.profile.environment.case IDs; exclusive with other selectors"
-        type: string
-        required: false
-      testops_case:
-        description: "Product regression TestOps bootstrap: all, case name or case ID; leave empty for normal campaigns"
-        type: string
-        required: false
-      ALLURE_JOB_RUN_ID:
-        description: "Allure TestOps service input; its requested selection takes precedence"
-        type: string
-        required: false
-      ALLURE_USERNAME:
-        description: "Allure TestOps service input"
-        type: string
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "47 8 * * *"
+#     - cron: "47 9 * * 0"
+#   workflow_dispatch:
+#     inputs:
+#       cadence:
+#         description: "Bounded daily ($20) or weekly ($100) selection; manual keeps explicit selectors"
+#         type: choice
+#         options: [manual, daily, weekly]
+#         default: manual
+#       target_branch:
+#         description: "Branch in paperclipai/paperclip to test; the trusted workflow still runs from master"
+#         type: string
+#         required: false
+#       max_parallel:
+#         description: "Optional lower concurrency for this campaign (cannot exceed the configured limit)"
+#         type: string
+#         required: false
+#       all:
+#         description: "Run the complete paid matrix when no narrower selector is supplied"
+#         type: boolean
+#         default: true
+#       group:
+#         description: "Comma-separated groups (AND semantics: legacy,native,local,daytona,warm,core,breadth)"
+#         type: string
+#         required: false
+#       suite:
+#         description: "Comma-separated suite IDs"
+#         type: string
+#         required: false
+#       profile:
+#         description: "Comma-separated runner profile fixture IDs"
+#         type: string
+#         required: false
+#       environment:
+#         description: "Comma-separated environment fixture IDs"
+#         type: string
+#         required: false
+#       case:
+#         description: "Comma-separated task case fixture IDs"
+#         type: string
+#         required: false
+#       id:
+#         description: "Comma-separated full suite.profile.environment.case IDs; exclusive with other selectors"
+#         type: string
+#         required: false
+#       testops_case:
+#         description: "Product regression TestOps bootstrap: all, case name or case ID; leave empty for normal campaigns"
+#         type: string
+#         required: false
+#       ALLURE_JOB_RUN_ID:
+#         description: "Allure TestOps service input; its requested selection takes precedence"
+#         type: string
+#         required: false
+#       ALLURE_USERNAME:
+#         description: "Allure TestOps service input"
+#         type: string
+#         required: false
+# 
 permissions:
   contents: read
 

@@ -1,13 +1,14 @@
 name: E2E Tests
 
-on:
-  workflow_dispatch:
-    inputs:
-      skip_llm:
-        description: "Skip LLM-dependent assertions (default: true)"
-        type: boolean
-        default: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       skip_llm:
+#         description: "Skip LLM-dependent assertions (default: true)"
+#         type: boolean
+#         default: true
+# 
 jobs:
   authorize:
     name: Authorize optional paid E2E

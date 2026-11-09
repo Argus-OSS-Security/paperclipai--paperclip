@@ -1,57 +1,58 @@
 name: Runner Live Protocol Evals
 
-on:
-  schedule:
-    - cron: "23 9 * * 0"
-  workflow_dispatch:
-    inputs:
-      target_branch:
-        description: "Branch in paperclipai/paperclip to evaluate; trusted orchestration still runs from master"
-        type: string
-        required: false
-      evals_sha:
-        description: "Exact 40-character paperclipai/paperclip-evals commit to execute"
-        type: string
-        required: false
-      rosters:
-        description: "Comma-separated live roster IDs/files, or all for the maintained enabled direct suite"
-        type: string
-        default: "all"
-        required: false
-      max_parallel:
-        description: "Optional lower concurrency (at least 2, no higher than the configured campaign limit)"
-        type: string
-        required: false
-      grok_authentication:
-        description: "Explicit Grok credential source; subscription uses protected GROK_AUTH_JSON"
-        type: choice
-        options:
-          - api_key
-          - subscription
-        default: api_key
-        required: false
-      accounting_mode:
-        description: "Controlled Codex/Claude costs and traces, or explicit legacy provider qualification"
-        type: choice
-        options:
-          - controlled
-          - legacy
-        default: controlled
-      report_to_testops:
-        description: "Publish plan 3 with the explicit TestOps Claude roster and selected accounting mode"
-        type: boolean
-        default: false
-      ALLURE_JOB_RUN_ID:
-        description: "Allure TestOps service input"
-        required: false
-      ALLURE_USERNAME:
-        description: "Allure TestOps service input"
-        required: false
-      max_infrastructure_retries:
-        description: "Automatic retries only for explicitly retryable infrastructure failures (0-3)"
-        type: number
-        default: 0
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "23 9 * * 0"
+#   workflow_dispatch:
+#     inputs:
+#       target_branch:
+#         description: "Branch in paperclipai/paperclip to evaluate; trusted orchestration still runs from master"
+#         type: string
+#         required: false
+#       evals_sha:
+#         description: "Exact 40-character paperclipai/paperclip-evals commit to execute"
+#         type: string
+#         required: false
+#       rosters:
+#         description: "Comma-separated live roster IDs/files, or all for the maintained enabled direct suite"
+#         type: string
+#         default: "all"
+#         required: false
+#       max_parallel:
+#         description: "Optional lower concurrency (at least 2, no higher than the configured campaign limit)"
+#         type: string
+#         required: false
+#       grok_authentication:
+#         description: "Explicit Grok credential source; subscription uses protected GROK_AUTH_JSON"
+#         type: choice
+#         options:
+#           - api_key
+#           - subscription
+#         default: api_key
+#         required: false
+#       accounting_mode:
+#         description: "Controlled Codex/Claude costs and traces, or explicit legacy provider qualification"
+#         type: choice
+#         options:
+#           - controlled
+#           - legacy
+#         default: controlled
+#       report_to_testops:
+#         description: "Publish plan 3 with the explicit TestOps Claude roster and selected accounting mode"
+#         type: boolean
+#         default: false
+#       ALLURE_JOB_RUN_ID:
+#         description: "Allure TestOps service input"
+#         required: false
+#       ALLURE_USERNAME:
+#         description: "Allure TestOps service input"
+#         required: false
+#       max_infrastructure_retries:
+#         description: "Automatic retries only for explicitly retryable infrastructure failures (0-3)"
+#         type: number
+#         default: 0
+# 
 permissions:
   contents: read
 
